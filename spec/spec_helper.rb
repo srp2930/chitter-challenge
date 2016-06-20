@@ -12,6 +12,7 @@ require './app/chitter'
 require './app/models/user'
 require 'web_helper'
 require 'database_cleaner'
+require_relative 'helpers/session'
 
 SimpleCov.formatters = [
   SimpleCov::Formatter::HTMLFormatter,
@@ -23,6 +24,8 @@ Capybara.app = Chitter
 
 RSpec.configure do |config|
   config.include Capybara::DSL
+
+  config.include SessionHelpers
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
